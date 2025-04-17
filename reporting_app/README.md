@@ -1,2 +1,11 @@
 # Reporting App queries
-queries for the FOLIO reporting app belong in this folder. 
+Queries for the FOLIO reporting app belong in this folder. 
+
+Note: queries need both the .sql and .json files:
+* the SQL file contains the query itself, and
+* the JSON file defines the Web form and the parameter names used in the SQL query.
+
+An optional Markdown (.md) file can provide documentation for the query.
+
+## Resources
+- [20250506 Reporting App for FOLIO Implementers](https://docs.google.com/presentation/d/1tnoxrlH5rGbLJS6Rg1hNoDcPDokIB9kCBDxgPHJ4Kds/) (Slide deck, start at slide 20, Using the Reporting App in FOLIO to Build and Run Real-Time Data reports)
