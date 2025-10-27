@@ -1,6 +1,6 @@
 {
     "displayName": "Query to identify incorrect budget summaries",
-    "description": "This query is used to identify incorrect budget summaries in finance.  It only identifies the incorrect summaries and does not correct them.  To correct them a script must be run, or recalculate the summaries for ideinfied funds/budgets from the budget interface in Finance.\n
+    "description": "This query is used to identify incorrect budget summaries in finance.  It only identifies the incorrect summaries and does not correct them.  To correct them a script must be run, or recalculate the summaries for ideinfied funds/budgets from the budget interface in Finance.
 Originally created by Index Data.",
     "instructions": "Chose a fiscal year to generate a report",
     "parameters": [
