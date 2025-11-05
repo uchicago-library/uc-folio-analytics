@@ -5,18 +5,14 @@ FOLIO reports and other analytic queries
 # Coding conventions
 Use consistent coding conventions, including automatic code formatting, to have a consisten style for easier reading and less noise code diffs.
 
-## SQL Conventions
+## SQL File and Formatting Conventions
 
   * Keywords: uppercase
   * Types: lowercase
   * Indent: 4 spaces
-  * Tabs: use tabs instead of spaces
-
-## End-of-line Conventions
-
-Use UNIX EOL conventions. Most IDEs can be configured for this.
-  
-## SQL Formatting
+  * Tabs: use spaces instead of tabs
+  * Line separator: Use UNIX line separator, most IDEs (including DBeaver) can be configured for this.
+  * File encoding: UTF-8
 
 For consistent formatting of SQL source, use [pgFormatter](https://sqlformat.darold.net) with default settings. pgFormatter is available two ways:
 
