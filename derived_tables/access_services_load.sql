@@ -1,55 +1,112 @@
 DROP TABLE IF EXISTS access_services.barcodes_with_effective_locations ; 
-create table access_services.barcodes_with_effective_locations as
-select
-    cast(folio_inventory.item__t.barcode as varchar),
-    cast(folio_inventory.location__t.name as varchar),
+CREATE TABLE access_services.barcodes_with_effective_locations AS
+SELECT
+    CAST(folio_inventory.item__t.barcode AS varchar),
+    CAST(folio_inventory.location__t.name AS varchar),
     folio_inventory.item__t.id
-from
+FROM
     folio_inventory.item__t
-inner join folio_inventory.location__t on
+INNER JOIN folio_inventory.location__t ON
     folio_inventory.item__t.effective_location_id = folio_inventory.location__t.id;
 CREATE INDEX ON access_services.effective_locations (barcode, id) ; 
 
 DROP TABLE IF EXISTS access_services.user_customfields;
-create table access_services.user_customfields as
-select
-    id as uuid,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'source') as varchar) as sourcer,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'category') as varchar) as category,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'status') as varchar) as status,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'statuses') as varchar) as statuses,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffStatus') as varchar) as staffStatus,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffDivision') as varchar) as staffDivision,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffDepartment') as varchar) as staffDepartment,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffPrivileges') as varchar) as staffPrivileges,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentId') as varchar) as studentid,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentStatus') as varchar) as studentStatus,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentDivision') as varchar) as studentDivision,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentDepartment') as varchar) as studentDepartment,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'deceased') as varchar) as deceased,
-    cast(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'collections') as varchar) as collections,
-    cast(jsonb->'personal'->>'lastName' as varchar) as last_name,
-    cast(jsonb->'personal'->>'firstName' as varchar) as first_name,
-    cast(jsonb->'personal'->>'preferredFirstName' as varchar) as preferred_first_name,
-    cast(jsonb->'personal'->>'email' as varchar) as email
-from
+CREATE TABLE access_services.user_customfields AS
+SELECT
+    id AS uuid,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'source') AS varchar) AS sourcer,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'category') AS varchar) AS category,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'status') AS varchar) AS status,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'statuses') AS varchar) AS statuses,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffStatus') AS varchar) AS staffStatus,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffDivision') AS varchar) AS staffDivision,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffDepartment') AS varchar) AS staffDepartment,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'staffPrivileges') AS varchar) AS staffPrivileges,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentId') AS varchar) AS studentid,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentStatus') AS varchar) AS studentStatus,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentDivision') AS varchar) AS studentDivision,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'studentDepartment') AS varchar) AS studentDepartment,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'deceased') AS varchar) AS deceased,
+    CAST(jsonb_extract_path_text(folio_users.users.jsonb, 'customFields', 'collections') AS varchar) AS collections,
+    CAST(jsonb->'personal'->>'lastName' AS varchar) AS last_name,
+    CAST(jsonb->'personal'->>'firstName' AS varchar) AS first_name,
+    CAST(jsonb->'personal'->>'preferredFirstName' AS varchar) AS preferred_first_name,
+    CAST(jsonb->'personal'->>'email' AS varchar) AS email
+FROM
     folio_users.users ;
 
 
 DROP TABLE IF EXISTS access_services.barcodes_with_circstatus ; 
-create table access_services.barcodes_with_circstatus as
-select
+CREATE TABLE access_services.barcodes_with_circstatus AS
+SELECT
     folio_derived.item_ext.item_ID,
-    cast(folio_derived.item_ext.barcode as varchar),
-    cast(folio_derived.item_ext.chronology as varchar),
-    cast(folio_derived.item_ext.copy_number as varchar),
-    cast(folio_derived.item_ext.enumeration as varchar),
-    cast(folio_derived.item_ext.volume as varchar),
-    cast(folio_derived.item_ext.effective_call_number as varchar),
-    cast(folio_derived.item_ext.effective_call_number_suffix as varchar),
-    cast(folio_derived.item_ext.effective_location_name as varchar),
-    cast(folio_derived.item_ext.status_date as varchar),
-    cast(folio_derived.item_ext.status_name as varchar)
-from
+    CAST(folio_derived.item_ext.barcode AS varchar),
+    CAST(folio_derived.item_ext.chronology AS varchar),
+    CAST(folio_derived.item_ext.copy_number AS varchar),
+    CAST(folio_derived.item_ext.enumeration AS varchar),
+    CAST(folio_derived.item_ext.volume AS varchar),
+    CAST(folio_derived.item_ext.effective_call_number AS varchar),
+    CAST(folio_derived.item_ext.effective_call_number_suffix AS varchar),
+    CAST(folio_derived.item_ext.effective_location_name AS varchar),
+    CAST(folio_derived.item_ext.status_date AS varchar),
+    CAST(folio_derived.item_ext.status_name AS varchar)
+FROM
     folio_derived.item_ext;
 CREATE INDEX ON access_services.barcodes_with_circstatus (barcode) ;
+
+--
+-- Duplicate of folio_derived.items_ext friendly to MS Access
+--
+
+DROP TABLE IF EXISTS access_services.item_ext_uc;
+CREATE TABLE access_services.item_ext_uc AS
+SELECT
+    folio_derived.item_ext.item_id,
+    CAST(folio_derived.item_ext.item_hrid AS varchar(255)),
+    CAST(folio_derived.item_ext.accession_number AS varchar(255)),
+    CAST(folio_derived.item_ext.barcode AS varchar(255)),
+    CAST(folio_derived.item_ext.chronology AS varchar(255)),
+    CAST(folio_derived.item_ext.copy_number AS varchar(255)),
+    CAST(folio_derived.item_ext.enumeration AS varchar(255)),
+    CAST(folio_derived.item_ext.volume AS varchar(255)),
+    folio_derived.item_ext.in_transit_destination_service_point_id,
+    CAST(folio_derived.item_ext.in_transit_destination_service_point_name AS varchar(255)),
+    CAST(folio_derived.item_ext.identifier AS varchar(255)),
+    CAST(folio_derived.item_ext.call_number AS varchar(255)),
+    folio_derived.item_ext.call_number_type_id,
+    CAST(folio_derived.item_ext.call_number_type_name AS varchar(255)),
+    CAST(folio_derived.item_ext.effective_call_number_prefix AS varchar(255)),
+    CAST(folio_derived.item_ext.effective_call_number AS varchar(255)),
+    CAST(folio_derived.item_ext.effective_call_number_suffix AS varchar(255)),
+    folio_derived.item_ext.effective_call_number_type_id,
+    CAST(folio_derived.item_ext.effective_call_number_type_name AS varchar(255)),
+    folio_derived.item_ext.damaged_status_id,
+    CAST(folio_derived.item_extdamaged_status_name. AS varchar(255)),
+    folio_derived.item_ext.material_type_id,
+    CAST(folio_derived.item_ext.material_type_name AS varchar(255)),
+    CAST(folio_derived.item_ext.number_of_pieces AS varchar(255)),
+    CAST(folio_derived.item_ext.number_of_missing_pieces AS varchar(255)),
+    folio_derived.item_ext.permanent_loan_type_id,
+    CAST(folio_derived.item_ext.permanent_loan_type_name AS varchar(255)),
+    folio_derived.item_ext.temporary_loan_type_id,
+    CAST(folio_derived.item_ext.temporary_loan_type_name AS varchar(255)),
+    folio_derived.item_ext.permanent_location_id,
+    CAST(folio_derived.item_ext.permanent_location_name AS varchar(255)),
+    folio_derived.item_ext.temporary_location_id,
+    CAST(folio_derived.item_ext.temporary_location_name AS varchar(255)),
+    folio_derived.item_ext.effective_location_id,
+    CAST(folio_derived.item_ext.effective_location_name AS varchar(255)),
+    CAST(folio_derived.item_ext.description_of_pieces AS varchar(255)),
+    CAST(folio_derived.item_ext.status_date AS varchar(255)),
+    CAST(folio_derived.item_ext.status_name AS varchar(255)),
+    folio_derived.item_ext.holdings_record_id,
+    folio_derived.item_ext.discovery_suppress,
+    folio_derived.item_ext.created_date,
+    folio_derived.item_ext.updated_by_user_id
+    CAST(folio_derived.item_ext.updated_date AS varchar(255))
+FROM
+    folio_derived.item_ext;
+CREATE INDEX ON access_services.item_ext_uc (item_id);
+CREATE INDEX ON access_services.item_ext_uc (item_hrid);
+CREATE INDEX ON access_services.item_ext_uc (barcode);
+
