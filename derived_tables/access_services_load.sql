@@ -104,7 +104,7 @@ SELECT
     folio_derived.item_ext.effective_location_id,
     CAST(folio_derived.item_ext.effective_location_name AS varchar(255)),
     CAST(folio_derived.item_ext.description_of_pieces AS varchar(255)),
-    CAST(folio_derived.item_ext.status_date AS varchar(255)),
+    folio_derived.item_ext.status_date::timestamp,
     CAST(folio_derived.item_ext.status_name AS varchar(255)),
     folio_derived.item_ext.holdings_record_id,
     folio_derived.item_ext.discovery_suppress,
