@@ -10,6 +10,9 @@ INNER JOIN folio_inventory.location__t ON
     folio_inventory.item__t.effective_location_id = folio_inventory.location__t.id;
 CREATE INDEX ON access_services.effective_locations (barcode, id) ; 
 
+GRANT SELECT, INSERT, UPDATE, DELETE ON access_services.effective_locations TO access_services_role
+
+
 DROP TABLE IF EXISTS access_services.user_customfields;
 CREATE TABLE access_services.user_customfields AS
 SELECT
@@ -35,6 +38,8 @@ SELECT
 FROM
     folio_users.users ;
 
+GRANT SELECT, INSERT, UPDATE, DELETE ON access_services.user_customfields TO access_services_role
+
 
 DROP TABLE IF EXISTS access_services.barcodes_with_circstatus ; 
 CREATE TABLE access_services.barcodes_with_circstatus AS
@@ -53,6 +58,8 @@ SELECT
 FROM
     folio_derived.item_ext;
 CREATE INDEX ON access_services.barcodes_with_circstatus (barcode) ;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON access_services.barcodes_with_circstatus TO access_services_role
 
 --
 -- Duplicate of folio_derived.items_ext friendly to MS Access
@@ -81,7 +88,7 @@ SELECT
     folio_derived.item_ext.effective_call_number_type_id,
     CAST(folio_derived.item_ext.effective_call_number_type_name AS varchar(255)),
     folio_derived.item_ext.damaged_status_id,
-    CAST(folio_derived.item_extdamaged_status_name. AS varchar(255)),
+    CAST(folio_derived.item_ext.damaged_status_name AS varchar(255)),
     folio_derived.item_ext.material_type_id,
     CAST(folio_derived.item_ext.material_type_name AS varchar(255)),
     CAST(folio_derived.item_ext.number_of_pieces AS varchar(255)),
@@ -102,11 +109,13 @@ SELECT
     folio_derived.item_ext.holdings_record_id,
     folio_derived.item_ext.discovery_suppress,
     folio_derived.item_ext.created_date,
-    folio_derived.item_ext.updated_by_user_id
+    folio_derived.item_ext.updated_by_user_id,
     CAST(folio_derived.item_ext.updated_date AS varchar(255))
 FROM
     folio_derived.item_ext;
 CREATE INDEX ON access_services.item_ext_uc (item_id);
 CREATE INDEX ON access_services.item_ext_uc (item_hrid);
 CREATE INDEX ON access_services.item_ext_uc (barcode);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON access_services.item_ext_uc TO access_services_role
 
