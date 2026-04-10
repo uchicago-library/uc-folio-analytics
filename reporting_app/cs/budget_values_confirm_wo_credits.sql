@@ -1,3 +1,8 @@
+-- metadb: budget_values_confirm_wo_credits
+--
+-- To Do: need to confirm preferred schema for this function, currently creates
+-- the function in the user's default schema.
+--
 DROP FUNCTION IF EXISTS budget_values_confirm_wo_credits;
 
 CREATE FUNCTION budget_values_confirm_wo_credits (
