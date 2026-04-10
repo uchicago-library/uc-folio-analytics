@@ -1,0 +1,13 @@
+{
+    "displayName": "CS Budget values: confirm (w/ credit column)",
+    "description": "This query is used to identify incorrect budget summaries in finance; includes column for credits.\nThis query only identifies the incorrect summaries and does not correct them.  To correct them a script must be run, or recalculate the summaries for ideinfied funds/budgets from the budget interface in Finance.\nOriginally created by Index Data.",
+    "instructions": "Chose a fiscal year to generate a report",
+    "parameters": [
+        {
+            "name": "fy_code",
+            "displayName": "Fiscal Year code (e.g. FY2023)",
+            "type": "text",
+            "required": true
+        }
+    ]
+}
