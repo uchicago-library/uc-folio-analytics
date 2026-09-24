@@ -1,0 +1,13 @@
+{
+  "displayName": "TS_Acq_Approvals_SumTotals",
+  "description": "This report returns the sum of purchase order line estimated prices and invoice line totals for approval orders to see spending by vendor and fund for JRL and Law from the beginning of the fiscal year through the day before the report is being run. This report returns bill to name, vendor code, pol fund codes, requester (sub funds), pol account number, pol estimated cost totals, invoice fund codes, and invoice line totals which are grouped by vendor, bill to, pol fund codes, and invoice fund codes.",
+  "instructions": "Input today's date as the date report is being run.",
+  "parameters": [
+    {
+      "name": "end_date",
+      "displayName": "Date report is run",
+      "type": "date",
+      "required": true
+    }
+  ]
+}
