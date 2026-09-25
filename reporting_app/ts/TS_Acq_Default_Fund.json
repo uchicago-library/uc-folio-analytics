@@ -1,0 +1,7 @@
+{
+    "displayName": "TS_Acq_Default_Fund",
+    "description": "Report looks for purchase order lines with fund code GCOMG created by acquisitions loading staff. The report returns the following fields: vendor, fund, account number, estimated price, po line number, title, publisher, edition, internal note, date created, created by user name, and workflow status.",
+    "instructions": "No parameter entry needed. Run report to return results for POs created within the last seven days.",
+    "parameters": [
+  ]
+}
