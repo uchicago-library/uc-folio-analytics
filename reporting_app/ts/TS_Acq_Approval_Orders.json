@@ -1,0 +1,19 @@
+{
+  "displayName": "TS_Acq_Approval_Orders",
+  "description": "Report returns purchase order line information to all approval orders created from the previous Friday to the Thursday before the report is run. The report returns the following fields: vendor, fund, account number, receiving note, internal note, requester, estimated price, PO line number, title, contributors, product ids (ISBN/OCLC numbers/etc), publisher, edition, and invoice number associated with the purchase order.",
+  "instructions": "Enter dates for previous Friday and today's date.",
+  "parameters": [
+    {
+      "name": "start_date",
+      "displayName": "Date of previous Friday",
+      "type": "date",
+      "required": true
+    },
+    {
+      "name": "end_date",
+      "displayName": "Date report is run",
+      "type": "date",
+      "required": true
+    },
+  ]
+}

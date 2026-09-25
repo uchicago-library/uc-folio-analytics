@@ -1,0 +1,7 @@
+{
+    "displayName": "TS_Acq_Zero_EstPrice",
+    "description": "Report looks for purchase order lines created with zero as the estimated price by acquisitions data loading staff. It excludes results with the word replacement in the receiving note.",
+    "instructions": "No parameter entry needed. Run report to return results for POs created within the last seven days.",
+    "parameters": [
+  ]
+}
