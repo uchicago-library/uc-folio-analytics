@@ -13,7 +13,7 @@ RETURNS TABLE ( -- dup orders results mapping
     po_date_ordered date,
     workflow_status text, 
     fund text,
-    price text,
+    price NUMERIC(19,4),
     order_format text,
     rush text,
     po_instance_title text,
