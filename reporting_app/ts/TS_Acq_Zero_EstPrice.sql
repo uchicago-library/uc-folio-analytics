@@ -1,6 +1,6 @@
 --metadb:function TS_Acq_Zero_EstPrice
 
-DROP FUNCTION TS_Acq_Zero_EstPrice();
+DROP FUNCTION IF EXISTS TS_Acq_Zero_EstPrice();
 
 CREATE FUNCTION TS_Acq_Zero_EstPrice(
     )
