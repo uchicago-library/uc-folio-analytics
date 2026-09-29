@@ -1,7 +1,7 @@
 {
   "displayName": "TS_Acq_DuplicateOrders",
   "description": "Report to find ISBN or OCLC matches between new orders and other records in FOLIO to evaluate matches for duplication. The report will include orders created on the start date up to but not including the date the report is run. The report is usually run to find orders created the previous business day. The report returns the following fields for new orders: PO number, Instance HRID, vendor code, date PO was created, workflow status, fund code, list price, order format, rush status, title from the POL, publication date from the POL, publisher from the POL, identifier type, raw identifier (includes any related text), identifier (just the ISBN or OCLC number). The report returns the following fields for the matched records: Instance HRID, title, instance discovery suppressed status, instance status,  instance statistical code, contributors, dates of publication, edition, holdings types, holdings locations.",
-  "instructions": "Enter the date of the previous business day as the start date and today's date as the report run date.",
+  "instructions": "Enter a date range for new orders. The start date is the first day of the range and will be included in the results. The end date closes the range and will not be included in the range. For example, to check new orders from the previous business day for duplicates in FOLIO Inventory, enter the previous business day as the start date and today as the end date.",
   "parameters": [
     {
       "name": "start_date",
@@ -11,7 +11,7 @@
     },
     {
       "name": "end_date",
-      "displayName": "Report run date",
+      "displayName": "End date",
       "type": "date",
       "required": true
     }
